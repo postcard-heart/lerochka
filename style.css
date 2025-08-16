@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+    font-family: 'Courier New', monospace;
+    color: #ffd3e0;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.birthday-notification {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    margin-bottom: 40px;
+    transform: scale(0);
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.birthday-notification:hover {
+    transform: scale(1.05);
+    box-shadow: 0 7px 20px rgba(255, 107, 107, 0.6);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.counter-container {
+    text-align: center;
+    margin-bottom: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    z-index: 10;
+}
+
+.counter-label {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #ffd3e0;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.7);
+}
+
+.counter {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+    font-family: 'Courier New', monospace;
+}
+
+.heart-label {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ffd3e0;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+    animation: glow 2s infinite alternate;
+    z-index: 10;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(255, 107, 107, 0.7); }
+    to { text-shadow: 0 0 30px rgba(255, 107, 107, 1); }
+}
+
+.heart-container {
+    position: relative;
+    animation: heartbeat 1.2s infinite;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    margin: 20px 0;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.heart {
+    color: #ff6b6b;
+    font-size: 12rem;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 50px rgba(255, 107, 107, 0.9);
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    padding: 30px;
+    backdrop-filter: blur(5px);
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    50% { transform: scale(1); }
+    75% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255, 211, 224, 0.7);
+    z-index: 10;
+}
+
+.message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(0, 0, 0, 0.9);
+    color: #ffd3e0;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(255, 107, 107, 0.7);
+    border: 2px solid #ff6b6b;
+    width: 80%;
+    max-width: 600px;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.message-box.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.message-box h2 {
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.message-box p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.heart-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.heart-drop {
+    position: absolute;
+    color: #ff6b6b;
+    font-size: 2rem;
+    opacity: 0;
+    animation: heart-fall linear forwards;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.8);
+}
+
+@keyframes heart-fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .counter {
+        font-size: 3.5rem;
+    }
+    .heart {
+        font-size: 8rem;
+        padding: 20px;
+    }
+    .heart-label {
+        font-size: 2rem;
+    }
+    .birthday-notification {
+        font-size: 1.5rem;
+        padding: 10px 20px;
+    }
+    .message-box {
+        width: 90%;
+        padding: 20px;
+    }
+    .message-box h2 {
+        font-size: 2rem;
+    }
+    .message-box p {
+        font-size: 1.2rem;
+    }
+}
